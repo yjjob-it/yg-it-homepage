@@ -246,10 +246,10 @@ const CourseCard = ({
   const isRecruiting = recruitStatus === "모집중";
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group">
       {/* 이미지 영역 */}
       <div className="relative h-48 overflow-hidden">
-        {/* 모집 상태 뱃지 */}
+        {/* 모집 상태 배지 */}
         <div className="absolute top-3 left-3 z-10">
           <span
             className={`px-3 py-1 rounded-md text-xs font-bold ${
@@ -324,7 +324,6 @@ const CourseCard = ({
     </div>
   );
 };
-
 // Courses Section Component\
 const CoursesSection = () => {
   const [activeTab, setActiveTab] = useState("모집중");
@@ -447,7 +446,7 @@ const CoursesSection = () => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
-        className="flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing pb-4"
+        className="flex gap-6 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing pb-8 pt-2"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -808,66 +807,108 @@ const FeatureSections = () => {
     </>
   );
 };
-//StaticBannerSection Component
-const StaticBannerSection = () => {
-  const staticPartners = [
-    {
-      name: "광고1",
-      logo: "",
-      image: "src/img/comm1.png",
-      link: "https://example.com/partner1",
-    },
-    {
-      name: "광고2",
-      logo: "",
-      image: "src/img/comm2.png",
-      link: "https://example.com/partner2",
-    },
-    {
-      name: "광고3",
-      logo: "",
-      image: "src/img/comm3.png",
-      link: "https://example.com/partner3",
-    },
-    {
-      name: "광고4",
-      logo: "",
-      image: "src/img/comm4.png",
-      link: "https://example.com/partner4",
-    },
-  ];
-
+//FullWidthBannerSection
+const FullWidthBannerSection = () => {
   return (
-    <section className="bg-gray-50 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {staticPartners.map((partner, index) => (
-            <a
-              key={index}
-              href={partner.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer h-40 block"
-            >
-              <div className="w-full h-full relative">
-                {partner.image ? (
-                  <img
-                    src={partner.image}
-                    alt={partner.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                    <div className="text-5xl mb-3">{partner.logo}</div>
-                    <p className="text-base font-semibold text-gray-700 text-center">
-                      {partner.name}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </a>
-          ))}
+    <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-[#1a2847] via-[#243450] to-[#2d3e5f]">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-32 h-32 md:w-64 md:h-64 bg-blue-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 md:w-64 md:h-64 bg-orange-300 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-20 h-20 md:w-40 md:h-40 bg-indigo-300 rounded-full blur-2xl"></div>
+      </div>
+
+      {/* 별 장식 */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-orange-300 opacity-60"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              fontSize: `${Math.random() * 10 + 10}px`,
+            }}
+          >
+            ✦
+          </div>
+        ))}
+      </div>
+
+      {/* 메인 컨텐츠 */}
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+        {/* 왼쪽 텍스트 영역 */}
+        <div className="text-white text-center md:text-left mb-8 md:mb-0 mt-8 md:mt-0">
+          <p className="text-orange-400 text-xs md:text-sm font-semibold mb-2 tracking-widest uppercase">
+            Special Offer
+          </p>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+            2025년 신규 과정
+            <br />
+            <span className="text-orange-400">특별 할인</span> 진행중
+          </h2>
+          <p className="text-blue-100 text-sm md:text-base mb-6 max-w-md">
+            IT 전문가로의 첫 걸음, 지금 시작하세요.
+            <br />
+            국비지원으로 부담없이 배우는 실무 중심 교육
+          </p>
+          <button className="bg-white text-[#1a2847] px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-orange-400 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            자세히 보기
+          </button>
         </div>
+
+        {/* 오른쪽 이미지/카드 영역 */}
+        <div className="relative">
+          <div className="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+            {/* 카드 내용 */}
+            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center mb-4">
+                  <h3 className="text-3xl md:text-4xl font-bold text-orange-500">
+                    2025
+                  </h3>
+                </div>
+                <p className="text-gray-600 text-xs md:text-sm font-semibold mb-2">
+                  YOUNGJIN IT EDUCATION
+                </p>
+                <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  NEW YEAR
+                  <br />
+                  SPECIAL
+                </h4>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center text-xs md:text-sm text-gray-700">
+                  <span className="font-semibold mr-2">✓</span>
+                  <span>100% 국비지원</span>
+                </div>
+                <div className="flex items-center text-xs md:text-sm text-gray-700">
+                  <span className="font-semibold mr-2">✓</span>
+                  <span>월 최대 70만원 지급</span>
+                </div>
+                <div className="flex items-center text-xs md:text-sm text-gray-700">
+                  <span className="font-semibold mr-2">✓</span>
+                  <span>실무 프로젝트 포함</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-auto"
+        >
+          <path
+            d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+            fill="white"
+            fillOpacity="0.1"
+          />
+        </svg>
       </div>
     </section>
   );
@@ -1893,7 +1934,7 @@ const App = () => {
       <CoursesSection />
       <StatsSection />
       <FeatureSections />
-      <StaticBannerSection />
+      <FullWidthBannerSection />
       <PortfolioSection />
       <RatingSection />
       {/* <BootcampSection /> */}
