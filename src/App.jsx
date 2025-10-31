@@ -476,16 +476,21 @@ const CoursesSection = () => {
 
 // Animated Counter Component
 
-const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
+const AnimatedCounter = ({ end, duration = 800, suffix = "" }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
+          hasAnimated.current = false;
+        } else {
+          setIsVisible(false);
+          setCount(0);
         }
       },
       { threshold: 0.3 }
@@ -500,20 +505,26 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
         observer.unobserve(counterRef.current);
       }
     };
-  }, [isVisible]);
+  }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || hasAnimated.current) return;
 
+    hasAnimated.current = true;
     let startTime;
     let animationFrame;
 
+    // easeOutQuad 함수로 더 빠르게 느껴지도록
+    const easeOutQuad = (t) => t * (2 - t);
+
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
-      const progress = (currentTime - startTime) / duration;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuad(progress);
 
       if (progress < 1) {
-        setCount(Math.floor(end * progress));
+        setCount(Math.floor(end * easedProgress));
         animationFrame = requestAnimationFrame(animate);
       } else {
         setCount(end);
@@ -565,7 +576,6 @@ const StatsSection = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                {/* 툴팁 */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-40 sm:w-48 bg-gray-800 text-white text-xs rounded-lg py-2 px-3 z-10 whitespace-normal">
                   IT 관련 분야
                   <br />
@@ -576,7 +586,7 @@ const StatsSection = () => {
             </div>
             <div className="flex items-center justify-center gap-1 sm:gap-2">
               <p className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                <AnimatedCounter end={85} suffix="%" />
+                <AnimatedCounter end={85} suffix="%" duration={1000} />
               </p>
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-orange-500 flex-shrink-0"
@@ -606,7 +616,6 @@ const StatsSection = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                {/* 툴팁 */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-40 sm:w-48 bg-gray-800 text-white text-xs rounded-lg py-2 px-3 z-10 whitespace-normal">
                   수강생들의
                   <br />
@@ -617,7 +626,7 @@ const StatsSection = () => {
             </div>
             <div className="flex items-center justify-center gap-1 sm:gap-2">
               <p className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                <AnimatedCounter end={96} suffix="%" />
+                <AnimatedCounter end={96} suffix="%" duration={1000} />
               </p>
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-orange-500 flex-shrink-0"
@@ -647,7 +656,6 @@ const StatsSection = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                {/* 툴팁 */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-40 sm:w-48 bg-gray-800 text-white text-xs rounded-lg py-2 px-3 z-10 whitespace-normal">
                   평균 포트폴리오 완성 기간입니다
                   <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
@@ -655,7 +663,7 @@ const StatsSection = () => {
               </div>
             </div>
             <p className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              <AnimatedCounter end={5} suffix="개월" />
+              <AnimatedCounter end={5} suffix="개월" duration={1000} />
             </p>
           </div>
         </div>
@@ -810,19 +818,20 @@ const FeatureSections = () => {
 //FullWidthBannerSection
 const FullWidthBannerSection = () => {
   return (
-    <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-[#1a2847] via-[#243450] to-[#2d3e5f]">
+    <section className="relative w-full h-[500px] md:h-[500px] overflow-hidden bg-gradient-to-br from-[#1a2847] via-[#243450] to-[#2d3e5f]">
+      {/* 배경 장식 요소 */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-32 h-32 md:w-64 md:h-64 bg-blue-300 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 md:w-64 md:h-64 bg-orange-300 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/4 w-20 h-20 md:w-40 md:h-40 bg-indigo-300 rounded-full blur-2xl"></div>
       </div>
 
-      {/* 별 장식 */}
+      {/* 별무늬 */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-orange-300 opacity-60"
+            className="absolute text-orange-400 opacity-60"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -835,59 +844,59 @@ const FullWidthBannerSection = () => {
       </div>
 
       {/* 메인 컨텐츠 */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between py-8 md:py-0">
         {/* 왼쪽 텍스트 영역 */}
-        <div className="text-white text-center md:text-left mb-8 md:mb-0 mt-8 md:mt-0">
+        <div className="text-white text-center md:text-left mb-6 md:mb-0">
           <p className="text-orange-400 text-xs md:text-sm font-semibold mb-2 tracking-widest uppercase">
             Special Offer
           </p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+          <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight">
             2025년 신규 과정
             <br />
             <span className="text-orange-400">특별 할인</span> 진행중
           </h2>
-          <p className="text-blue-100 text-sm md:text-base mb-6 max-w-md">
+          <p className="text-blue-100 text-xs md:text-base mb-4 md:mb-6 max-w-md mx-auto md:mx-0">
             IT 전문가로의 첫 걸음, 지금 시작하세요.
             <br />
             국비지원으로 부담없이 배우는 실무 중심 교육
           </p>
-          <button className="bg-white text-[#1a2847] px-8 py-3 rounded-full font-bold text-sm md:text-base hover:bg-orange-400 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+          <button className="bg-white text-[#1a2847] px-6 md:px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base hover:bg-orange-400 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
             자세히 보기
           </button>
         </div>
 
         {/* 오른쪽 이미지/카드 영역 */}
         <div className="relative">
-          <div className="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+          <div className="w-48 h-56 md:w-80 md:h-96 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-500 overflow-hidden">
             {/* 카드 내용 */}
-            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+            <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-between">
               <div>
-                <div className="flex items-center mb-4">
-                  <h3 className="text-3xl md:text-4xl font-bold text-orange-500">
+                <div className="flex items-center mb-2 md:mb-4">
+                  <h3 className="text-2xl md:text-4xl font-bold text-orange-500">
                     2025
                   </h3>
                 </div>
-                <p className="text-gray-600 text-xs md:text-sm font-semibold mb-2">
+                <p className="text-gray-600 text-[10px] md:text-sm font-semibold mb-1 md:mb-2">
                   YOUNGJIN IT EDUCATION
                 </p>
-                <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                <h4 className="text-lg md:text-3xl font-bold text-gray-900 mb-2 md:mb-4">
                   NEW YEAR
                   <br />
                   SPECIAL
                 </h4>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center text-xs md:text-sm text-gray-700">
-                  <span className="font-semibold mr-2">✓</span>
+              <div className="space-y-1 md:space-y-2">
+                <div className="flex items-center text-[10px] md:text-sm text-gray-700">
+                  <span className="font-semibold mr-1 md:mr-2">✓</span>
                   <span>100% 국비지원</span>
                 </div>
-                <div className="flex items-center text-xs md:text-sm text-gray-700">
-                  <span className="font-semibold mr-2">✓</span>
+                <div className="flex items-center text-[10px] md:text-sm text-gray-700">
+                  <span className="font-semibold mr-1 md:mr-2">✓</span>
                   <span>월 최대 70만원 지급</span>
                 </div>
-                <div className="flex items-center text-xs md:text-sm text-gray-700">
-                  <span className="font-semibold mr-2">✓</span>
+                <div className="flex items-center text-[10px] md:text-sm text-gray-700">
+                  <span className="font-semibold mr-1 md:mr-2">✓</span>
                   <span>실무 프로젝트 포함</span>
                 </div>
               </div>
@@ -896,6 +905,7 @@ const FullWidthBannerSection = () => {
         </div>
       </div>
 
+      {/* 하단 물결무늬 */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg
           viewBox="0 0 1440 120"
