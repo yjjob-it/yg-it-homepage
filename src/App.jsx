@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   Search,
   Menu,
@@ -332,68 +332,72 @@ const CoursesSection = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const courses = {
-    모집중: [
-      {
-        title: "(웹퍼블리셔, UI/UX, 웹디자인, 영상) 디지털디자인",
-        subtitle: "웹퍼블리셔, UI/UX, 웹디자인, 영상",
-        tags: ["웹퍼블리셔", "UI/UX", "웹디자인", "영상"],
-        image: "/img/cell1.png",
-        recruitStatus: "모집중",
-        recruitPeriod: "~ 25.11.11",
-        educationPeriod: "25.11.05 ~ 26.04.06",
-      },
-      {
-        title: "(인디자인, 포토폴리오) 디지털 편집디자인",
-        subtitle: "인디자인, 포토폴리오",
-        tags: ["인디자인", "포토폴리오"],
-        image: "/img/cell2.jpg",
-        recruitStatus: "모집중",
-        recruitPeriod: "~ 25.12.07",
-        educationPeriod: "25.12.01 ~ 26.04.30",
-      },
-    ],
-    전체과정: [
-      {
-        title: "(웹퍼블리셔, UI/UX, 웹디자인, 영상) 디지털디자인",
-        subtitle: "웹퍼블리셔, UI/UX, 웹디자인, 영상",
-        tags: ["웹퍼블리셔", "UI/UX", "웹디자인", "영상"],
-        image: "/img/cell1.png",
-        recruitStatus: "모집중",
-        recruitPeriod: "~ 25.11.11",
-        educationPeriod: "25.11.05 ~ 26.04.06",
-      },
-      {
-        title: "(인디자인, 포토폴리오) 디지털 편집디자인",
-        subtitle: "인디자인, 포토폴리오",
-        tags: ["인디자인", "포토폴리오"],
-        image: "/img/cell2.jpg",
-        recruitStatus: "모집중",
-        recruitPeriod: "~ 25.12.07",
-        educationPeriod: "25.12.01 ~ 26.04.30",
-      },
-      {
-        title: "스마트웹앱 개발자 양성과정",
-        subtitle: "React, Node.js, MongoDB",
-        tags: ["React", "Node.js", "개발"],
-        image: "/img/cell1.png",
-        recruitStatus: "모집종료",
-        recruitPeriod: "~ 25.10.15",
-        educationPeriod: "25.10.20 ~ 26.03.20",
-      },
-      {
-        title: "웹 퍼블리셔 양성",
-        subtitle: "HTML, CSS, JavaScript",
-        tags: ["HTML", "CSS", "JavaScript"],
-        image: "/img/cell2.jpg",
-        recruitStatus: "모집중",
-        recruitPeriod: "~ 25.11.30",
-        educationPeriod: "25.12.05 ~ 26.05.05",
-      },
-    ],
-  };
+  const courses = [
+    {
+      title: "웹퍼블리셔, UI/UX, 웹디자인, 영상 (5개월)",
+      subtitle: "웹퍼블리셔, UI/UX, 웹디자인, 영상",
+      tags: ["웹퍼블리셔", "UI/UX", "웹디자인", "영상"],
+      image: "/img/cell1.png",
+      recruitStatus: "모집중",
+      recruitPeriod: "",
+      educationPeriod: "2025.11.17 ~ 2026.04.16",
+    },
+    {
+      title: "(출판)디지털 편집디자인 (인디자인,포트폴리오) (5개월)",
+      subtitle: "인디자인, 포토폴리오",
+      tags: ["인디자인", "포토폴리오"],
+      image: "/img/cell2.png",
+      recruitStatus: "모집중",
+      recruitPeriod: "",
+      educationPeriod: "2025.12.01 ~ 2026.04.30",
+    },
+    {
+      title: "생성형 AI 기반 UI/UX디자인 & 웹앱 콘텐츠 개발 (6개월)",
+      subtitle: "React, Node.js, MongoDB",
+      tags: ["React", "Node.js", "개발"],
+      image: "/img/cell3.png",
+      recruitStatus: "모집종료",
+      recruitPeriod: "",
+      educationPeriod: "2025.08.12 ~ 2026.03.06",
+    },
+    {
+      title: "게임그래픽(3D캐릭터/배경/웹툰)제작 전문가 양성과정 (6개월)",
+      subtitle: "3D캐릭터, 배경, 웹툰",
+      tags: ["3D캐릭터", "배경", "웹툰"],
+      image: "/img/cell4.png",
+      recruitStatus: "모집종료",
+      recruitPeriod: "",
+      educationPeriod: "2025.08.12 ~ 2026.02.12",
+    },
+    {
+      title:
+        "생성형 AI를 활용한 디지털 영상 편집(프리미어, 애프터이펙트) 및 콘텐츠 제작 과정 (6개월)",
+      subtitle: "프리미어, 애프터이펙트",
+      tags: ["프리미어", "애프터이펙트", "영상편집"],
+      image: "/img/cell5.png",
+      recruitStatus: "모집종료",
+      recruitPeriod: "",
+      educationPeriod: "2025.08.19 ~ 2026.02.19",
+    },
+    {
+      title: "자바&스프링부트 기반 웹개발자 과정 (6개월)",
+      subtitle: "자바, 스프링부트",
+      tags: ["자바", "스프링부트", "웹개발"],
+      image: "/img/cell6.png",
+      recruitStatus: "모집종료",
+      recruitPeriod: "",
+      educationPeriod: "2025.07.22 ~ 2026.01.23",
+    },
+  ];
 
   const filters = ["모집중", "전체과정"];
+
+  const filteredCourses = useMemo(() => {
+    if (activeTab === "모집중") {
+      return courses.filter((course) => course.recruitStatus === "모집중");
+    }
+    return courses;
+  }, [activeTab]);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -452,7 +456,7 @@ const CoursesSection = () => {
           msOverflowStyle: "none",
         }}
       >
-        {courses[activeTab]?.map((course, index) => (
+        {filteredCourses.map((course, index) => (
           <div key={index} className="flex-shrink-0 w-80 md:w-96">
             <CourseCard {...course} />
           </div>
