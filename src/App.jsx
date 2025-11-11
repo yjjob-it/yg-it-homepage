@@ -60,7 +60,7 @@ const Header = () => {
               >
                 <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
                   <img
-                    src="/src/img/minilogo.png"
+                    src="/img/minilogo.png"
                     alt="영진직업전문학교 로고"
                     className="w-full h-full object-contain"
                   />
@@ -338,7 +338,7 @@ const CoursesSection = () => {
         title: "(웹퍼블리셔, UI/UX, 웹디자인, 영상) 디지털디자인",
         subtitle: "웹퍼블리셔, UI/UX, 웹디자인, 영상",
         tags: ["웹퍼블리셔", "UI/UX", "웹디자인", "영상"],
-        image: "src/img/cell1.png",
+        image: "/img/cell1.png",
         recruitStatus: "모집중",
         recruitPeriod: "~ 25.11.11",
         educationPeriod: "25.11.05 ~ 26.04.06",
@@ -347,7 +347,7 @@ const CoursesSection = () => {
         title: "(인디자인, 포토폴리오) 디지털 편집디자인",
         subtitle: "인디자인, 포토폴리오",
         tags: ["인디자인", "포토폴리오"],
-        image: "src/img/cell2.jpg",
+        image: "/img/cell2.jpg",
         recruitStatus: "모집중",
         recruitPeriod: "~ 25.12.07",
         educationPeriod: "25.12.01 ~ 26.04.30",
@@ -358,7 +358,7 @@ const CoursesSection = () => {
         title: "(웹퍼블리셔, UI/UX, 웹디자인, 영상) 디지털디자인",
         subtitle: "웹퍼블리셔, UI/UX, 웹디자인, 영상",
         tags: ["웹퍼블리셔", "UI/UX", "웹디자인", "영상"],
-        image: "src/img/cell1.png",
+        image: "/img/cell1.png",
         recruitStatus: "모집중",
         recruitPeriod: "~ 25.11.11",
         educationPeriod: "25.11.05 ~ 26.04.06",
@@ -367,7 +367,7 @@ const CoursesSection = () => {
         title: "(인디자인, 포토폴리오) 디지털 편집디자인",
         subtitle: "인디자인, 포토폴리오",
         tags: ["인디자인", "포토폴리오"],
-        image: "src/img/cell2.jpg",
+        image: "/img/cell2.jpg",
         recruitStatus: "모집중",
         recruitPeriod: "~ 25.12.07",
         educationPeriod: "25.12.01 ~ 26.04.30",
@@ -376,7 +376,7 @@ const CoursesSection = () => {
         title: "스마트웹앱 개발자 양성과정",
         subtitle: "React, Node.js, MongoDB",
         tags: ["React", "Node.js", "개발"],
-        image: "src/img/cell1.png",
+        image: "/img/cell1.png",
         recruitStatus: "모집종료",
         recruitPeriod: "~ 25.10.15",
         educationPeriod: "25.10.20 ~ 26.03.20",
@@ -385,7 +385,7 @@ const CoursesSection = () => {
         title: "웹 퍼블리셔 양성",
         subtitle: "HTML, CSS, JavaScript",
         tags: ["HTML", "CSS", "JavaScript"],
-        image: "src/img/cell2.jpg",
+        image: "/img/cell2.jpg",
         recruitStatus: "모집중",
         recruitPeriod: "~ 25.11.30",
         educationPeriod: "25.12.05 ~ 26.05.05",
@@ -757,7 +757,7 @@ const FeatureSections = () => {
         subDescription="또한 포트폴리오 준비부터 면접 대비까지 현업 멘토의 1:1 맞춤 지도를 통해 취업 지원 프로그램을 운영합니다."
         image={
           <img
-            src="src/img/img (1).jpg"
+            src="/img/img (1).jpg"
             alt="학습 관리 시스템"
             className="w-full h-64 md:h-80 object-cover"
             onError={(e) => {
@@ -778,7 +778,7 @@ const FeatureSections = () => {
         subDescription="또한 프로젝트 중심 학습으로 실무에서의 역량을 체크해 취업 성공률을 높입니다."
         image={
           <img
-            src="src/img/img (2).jpg"
+            src="/img/img (2).jpg"
             alt="실무 커리큘럼"
             className="w-full h-64 md:h-80 object-cover"
             onError={(e) => {
@@ -799,7 +799,7 @@ const FeatureSections = () => {
         subDescription="또한 훈련 장려금으로 월 최대 70만원까지 지급되어 학업과 생활을 동시에 이어갈 수 있습니다."
         image={
           <img
-            src="src/img/img (3).jpg"
+            src="/img/img (3).jpg"
             alt="국비지원"
             className="w-full h-64 md:h-80 object-cover"
             onError={(e) => {
@@ -940,16 +940,16 @@ const PortfolioSection = () => {
   }, []);
 
   const allPortfolios = [
-    { image: "src/img/portfolio1.jpg" },
-    { image: "src/img/portfolio2.jpg" },
-    { image: "src/img/portfolio3.jpg" },
-    { image: "src/img/portfolio4.jpg" },
-    { image: "src/img/portfolio5.jpg" },
-    { image: "src/img/portfolio6.jpg" },
-    { image: "src/img/portfolio7.jpg" },
-    { image: "src/img/portfolio8.jpg" },
-    { image: "src/img/portfolio9.jpg" },
-    { image: "src/img/portfolio10.jpg" },
+    { image: "/img/portfolio1.jpg" },
+    { image: "/img/portfolio2.jpg" },
+    { image: "/img/portfolio3.jpg" },
+    { image: "/img/portfolio4.jpg" },
+    { image: "/img/portfolio5.jpg" },
+    { image: "/img/portfolio6.jpg" },
+    { image: "/img/portfolio7.jpg" },
+    { image: "/img/portfolio8.jpg" },
+    { image: "/img/portfolio9.jpg" },
+    { image: "/img/portfolio10.jpg" },
   ];
 
   // 모바일(2열)일 때는 10개, 데스크톱(3열)일 때는 9개
@@ -1006,55 +1006,55 @@ const RatingSection = () => {
   const partners = [
     {
       company: "소프트팀",
-      logo: "src/img/bannerlogo1.png",
+      logo: "/img/bannerlogo1.png",
       personName: "김*호",
       course: "웹퍼블리셔",
     },
     {
       company: "벡토라",
-      logo: "src/img/bannerlogo2.png",
+      logo: "/img/bannerlogo2.png",
       personName: "박*린",
       course: "IT보안담당자",
     },
     {
       company: "넥시움",
-      logo: "src/img/bannerlogo3.png",
+      logo: "/img/bannerlogo3.png",
       personName: "유*인",
       course: "백앤드개발자",
     },
     {
       company: "SYNXA",
-      logo: "src/img/bannerlogo4.png",
+      logo: "/img/bannerlogo4.png",
       personName: "안*희",
       course: "UI/UX 편집디자인",
     },
     {
       company: "퀸틸",
-      logo: "src/img/bannerlogo5.png",
+      logo: "/img/bannerlogo5.png",
       personName: "양*양",
       course: "프론트앤드개발자",
     },
     {
       company: "INFOSYS",
-      logo: "src/img/bannerlogo6.png",
+      logo: "/img/bannerlogo6.png",
       personName: "이*민",
       course: "웹개발자",
     },
     {
       company: "테크니오",
-      logo: "src/img/bannerlogo7.png",
+      logo: "/img/bannerlogo7.png",
       personName: "허*은",
       course: "백앤드개발자",
     },
     {
       company: "BRIXO",
-      logo: "src/img/bannerlogo8.png",
+      logo: "/img/bannerlogo8.png",
       personName: "김*지",
       course: "프론트앤드개발자",
     },
     {
       company: "넷웨어",
-      logo: "src/img/bannerlogo9.png",
+      logo: "/img/bannerlogo9.png",
       personName: "동*래",
       course: "UI/UX 편집디자인",
     },
@@ -1289,7 +1289,7 @@ const ProcessSection = () => {
           교육 과정입니다.
         </p>
       ),
-      image: "src/img/img (1).jpg",
+      image: "img/img (1).jpg",
       link: "/course/digital-design",
     },
     {
@@ -1302,7 +1302,7 @@ const ProcessSection = () => {
           실무 프로젝트를 통해 경험을 쌓을 수 있습니다.
         </p>
       ),
-      image: "src/img/img (2).jpg",
+      image: "img/img (2).jpg",
       link: "/course/smart-web",
     },
     {
@@ -1315,7 +1315,7 @@ const ProcessSection = () => {
           백엔드 개발 역량을 키울 수 있습니다.
         </p>
       ),
-      image: "src/img/img (3).jpg",
+      image: "img/img (3).jpg",
       link: "/course/java-web",
     },
     {
@@ -1327,7 +1327,7 @@ const ProcessSection = () => {
           디지털 영상 제작에 필요한 기술을 배울 수 있습니다.
         </p>
       ),
-      image: "src/img/img (4).jpg",
+      image: "img/img (4).jpg",
       link: "/course/digital-video",
     },
     {
@@ -1340,7 +1340,7 @@ const ProcessSection = () => {
           실무 중심의 웹 개발 기술을 배울 수 있습니다.
         </p>
       ),
-      image: "src/img/img (1).jpg",
+      image: "/img/img (1).jpg",
       link: "/course/frontend",
     },
   ];
