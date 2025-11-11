@@ -132,8 +132,8 @@ export const coursesData = {
     },
     {
       title: "UX/UI 디자인 부트캠프",
-      subtitle: "청규석 전형부 인턴십",
-      tags: ["출시 디자이너 과정"],
+      subtitle: "인턴십",
+      tags: ["디자이너 과정"],
       image: "/img/cell1.png",
       recruitStatus: "모집중",
       recruitPeriod: "25.10.29 ~ 25.12.12",
@@ -142,14 +142,14 @@ export const coursesData = {
     {
       title: "PM 실무 부트캠프",
       subtitle: "출시 개발 경력",
-      tags: ["AI 역량", "3판의 인턴십"],
+      tags: ["AI 역량", "인턴십"],
       image: "/img/cell2.jpg",
       recruitStatus: "모집중",
       recruitPeriod: "25.11.05 ~ 25.12.15",
       educationPeriod: "25.12.20 ~ 26.06.10",
     },
     {
-      title: "재직자: 애저 클라우드",
+      title: "재직자:Azure클라우드",
       subtitle: "클라우드 실무 과정",
       tags: ["Azure", "Cloud", "실무"],
       image: "/img/cell1.png",
