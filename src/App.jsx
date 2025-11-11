@@ -242,11 +242,23 @@ const CourseCard = ({
   recruitStatus = "모집중", // "모집중" 또는 "모집종료"
   recruitPeriod = "", // "~ 25.11.11"
   educationPeriod = "", // "25.11.05 ~ 26.04.06"
+  link = "", // 링크 URL
 }) => {
   const isRecruiting = recruitStatus === "모집중";
 
+  const handleClick = () => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group">
+    <div
+      className={`bg-white rounded-xl overflow-hidden shadow-sm transition-all duration-300 group ${
+        link ? "cursor-pointer hover:shadow-lg" : "cursor-default"
+      }`}
+      onClick={handleClick}
+    >
       {/* 이미지 영역 */}
       <div className="relative h-48 overflow-hidden">
         {/* 모집 상태 배지 */}
@@ -341,6 +353,7 @@ const CoursesSection = () => {
       recruitStatus: "모집중",
       recruitPeriod: "",
       educationPeriod: "2025.11.17 ~ 2026.04.16",
+      link: "http://www.yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnRWbkpQVlVwUlZrUkJPUT09K00=",
     },
     {
       title: "(출판)디지털 편집디자인 (인디자인,포트폴리오) (5개월)",
@@ -350,6 +363,7 @@ const CoursesSection = () => {
       recruitStatus: "모집중",
       recruitPeriod: "",
       educationPeriod: "2025.12.01 ~ 2026.04.30",
+      link: "http://www.yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnRWbkpPVnpWUlZrUkJPUT09K00=",
     },
     {
       title: "생성형 AI 기반 UI/UX디자인 & 웹앱 콘텐츠 개발 (6개월)",
