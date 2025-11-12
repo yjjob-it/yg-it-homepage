@@ -44,7 +44,8 @@ const StatsSection = ({ stats }) => {
                   <AnimatedCounter
                     end={stat.value}
                     suffix={stat.suffix}
-                    duration={1000}
+                    duration={index === 1 ? 2000 : 1000}
+                    decimals={index === 1 ? 1 : 0}
                   />
                 </p>
                 {stat.showArrow && (

@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const AnimatedCounter = ({ end, duration = 800, suffix = "" }) => {
+const AnimatedCounter = ({
+  end,
+  duration = 800,
+  suffix = "",
+  decimals = 0,
+}) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef(null);
@@ -47,7 +52,8 @@ const AnimatedCounter = ({ end, duration = 800, suffix = "" }) => {
       const easedProgress = easeOutQuad(progress);
 
       if (progress < 1) {
-        setCount(Math.floor(end * easedProgress));
+        const currentValue = end * easedProgress;
+        setCount(decimals > 0 ? currentValue : Math.floor(currentValue));
         animationFrame = requestAnimationFrame(animate);
       } else {
         setCount(end);
@@ -61,11 +67,11 @@ const AnimatedCounter = ({ end, duration = 800, suffix = "" }) => {
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [isVisible, end, duration]);
+  }, [isVisible, end, duration, decimals]);
 
   return (
     <span ref={counterRef}>
-      {count}
+      {decimals > 0 ? count.toFixed(decimals) : count}
       {suffix}
     </span>
   );

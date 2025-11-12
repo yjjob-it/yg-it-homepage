@@ -10,8 +10,8 @@ export const statsData = [
   },
   {
     label: "수강생 만족도",
-    value: 96,
-    suffix: "%",
+    value: 4.9,
+    suffix: "점",
     gradient:
       "bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent",
     tooltip: "수강생들의\n교육 만족도 평균입니다",
