@@ -5,10 +5,16 @@ on:
     branches: [ "main" ]
 
 jobs:
+
+  
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Test SFTP
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" \
+          sftp -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<< "ls /var/www"
       # 1) 소스 받아오기
       - name: Checkout
         uses: actions/checkout@v3
