@@ -145,7 +145,7 @@ export const coursesData = {
       image: "/img/cell2.jpg",
       recruitStatus: "모집중",
       recruitPeriod: "",
-      educationPeriod: "26.03.03 ~ 26.08.25",
+      educationPeriod: "26.03.16 ~ 26.09.30",
     },
   ],
 };
