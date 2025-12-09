@@ -1,0 +1,39 @@
+name: Deploy React dist files with SCP only (No Node on server)
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) 소스 받아오기
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2) Node 설치(서버가 아니라 GitHub Actions에서 설치)
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # 3) npm install
+      - name: Install
+        run: npm install
+
+      # 4) React 빌드 → dist 폴더 생성
+      - name: Build
+        run: npm run build
+
+      # 5) sshpass 설치 (GitHub Actions 안에서)
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      # 6) dist 내부 파일을 서버로 업로드
+      - name: Upload dist contents to server
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" \
+          scp -o StrictHostKeyChecking=no -r dist/* \
+          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/
