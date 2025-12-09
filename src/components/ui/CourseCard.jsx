@@ -9,9 +9,17 @@ const CourseCard = ({
   urgency = "", // 마감임박 D-X
   recruitPeriod = "",
   educationPeriod = "",
+  url = "", // 클릭시 이동할 링크
 }) => {
   // urgency가 있으면 우선 표시, 없으면 recruitStatus 표시
   const displayStatus = urgency || recruitStatus;
+
+  // 카드 클릭 핸들러
+  const handleCardClick = () => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
 
   // 배지 색상 결정
   const getBadgeStyle = () => {
@@ -25,7 +33,10 @@ const CourseCard = ({
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group">
+    <div
+      onClick={handleCardClick}
+      className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group"
+    >
       {/* 이미지 영역 */}
       <div className="relative h-48 overflow-hidden">
         {/* 모집 상태 배지 */}

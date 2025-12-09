@@ -5,7 +5,11 @@ const CoursesSection = ({ courses }) => {
   const [activeTab, setActiveTab] = useState("모집중");
   const [showAll, setShowAll] = useState(false);
 
-  const filters = ["모집중", "모집예정", "전체보기"];
+  const filters = [
+    "모집중",
+    // "모집예정",
+    "전체보기",
+  ];
 
   const totalCourses = courses[activeTab]?.length || 0;
 
