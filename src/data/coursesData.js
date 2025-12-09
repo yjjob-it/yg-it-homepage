@@ -16,7 +16,7 @@ export const coursesData = {
       image: "/img/cell2.jpg",
       recruitStatus: "모집중",
       recruitPeriod: "",
-      educationPeriod: "2025.12.01 ~ 2026.04.30",
+      educationPeriod: "2025.12.16 ~ 2026.05.18",
     },
   ],
   모집예정: [
