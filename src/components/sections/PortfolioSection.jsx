@@ -14,6 +14,12 @@ const PortfolioSection = ({ portfolios }) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const handleCardClick = (url) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   const displayedPortfolios = isMobile ? portfolios : portfolios.slice(0, 9);
 
   return (
@@ -29,6 +35,7 @@ const PortfolioSection = ({ portfolios }) => {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 px-4 lg:px-0">
           {displayedPortfolios.map((portfolio, index) => (
             <div
+              onClick={() => handleCardClick(portfolio.url)}
               key={index}
               className="bg-[#999999] aspect-[4/3] shadow-lg hover:shadow-2xl hover:scale-102 transition-all duration-300 cursor-pointer overflow-hidden"
             >

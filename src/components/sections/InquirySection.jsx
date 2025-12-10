@@ -2,7 +2,7 @@ import React from "react";
 
 const InquirySection = () => {
   const handleInquiryClick = () => {
-    // window.location.href = "DB/링크연결";
+    window.location.href = "http://www.yjjob.or.kr/p/?j=28";
   };
 
   return (

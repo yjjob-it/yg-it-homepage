@@ -98,7 +98,7 @@ const Header = () => {
             {/* 오른쪽: 로그인/회원가입 + 햄버거 메뉴 */}
             <div className="flex items-center space-x-4">
               {/* 데스크톱 로그인/회원가입 버튼 */}
-              <button
+              {/* <button
                 className={`transition-all duration-300 font-medium hidden lg:block px-5 py-2 rounded-lg border-2 ${
                   isScrolled
                     ? "text-[#1a2847] border-[#1a2847] hover:bg-[#1a2847] hover:text-white"
@@ -115,7 +115,7 @@ const Header = () => {
                 }`}
               >
                 회원가입
-              </button>
+              </button> */}
 
               {/* 모바일 햄버거 메뉴 */}
               <button
@@ -170,14 +170,14 @@ const Header = () => {
           </nav>
 
           {/* 하단 버튼 */}
-          <div className="p-4 border-t space-y-3">
+          {/* <div className="p-4 border-t space-y-3">
             <button className="w-full text-[#1a2847] border-2 border-[#1a2847] hover:bg-[#1a2847] hover:text-white py-3 rounded-lg font-medium transition-all">
               로그인
             </button>
             <button className="w-full bg-orange-500 text-white hover:bg-orange-600 py-3 rounded-lg font-medium transition-all">
               회원가입
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
