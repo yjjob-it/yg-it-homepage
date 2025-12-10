@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://it.yjjob.or.kr/sitemap.xml
