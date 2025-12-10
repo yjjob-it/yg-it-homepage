@@ -35,18 +35,19 @@ const FullWidthBannerSection = () => {
             Special Offer
           </p>
           <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight">
-            2025년 신규 과정
+            2026년 신규 과정
             <br />
-            <span className="text-orange-400">특별 할인</span> 진행중
+            <span className="text-orange-400">수당 최대 90만원</span> 진행중
           </h2>
           <p className="text-blue-100 text-xs md:text-base mb-4 md:mb-6 max-w-md mx-auto md:mx-0">
-            IT 전문가로의 첫 걸음, 지금 시작하세요.
+            지금 등록하면{" "}
+            <span className="text-orange-400">Figma·미드저니</span> 무료 제공!
             <br />
-            국비지원으로 부담없이 배우는 실무 중심 교육
+            디자인부터 AI 이미지 생성까지, 프로젝트 완성도를 높이세요.
           </p>
-          <button className="bg-white text-[#1a2847] px-6 md:px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base hover:bg-orange-400 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-102">
+          {/* <button className="bg-white text-[#1a2847] px-6 md:px-8 py-2 md:py-3 rounded-full font-bold text-sm md:text-base hover:bg-orange-400 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-102">
             자세히 보기
-          </button>
+          </button> */}
         </div>
 
         {/* 오른쪽 이미지/카드 영역 */}
@@ -57,7 +58,7 @@ const FullWidthBannerSection = () => {
               <div>
                 <div className="flex items-center mb-2 md:mb-4">
                   <h3 className="text-2xl md:text-4xl font-bold text-orange-500">
-                    2025
+                    2026
                   </h3>
                 </div>
                 <p className="text-gray-600 text-[10px] md:text-sm font-semibold mb-1 md:mb-2">
@@ -71,13 +72,13 @@ const FullWidthBannerSection = () => {
               </div>
 
               <div className="space-y-1 md:space-y-2">
-                <div className="flex items-center text-[10px] md:text-sm text-gray-700">
+                {/* <div className="flex items-center text-[10px] md:text-sm text-gray-700">
                   <span className="font-semibold mr-1 md:mr-2">✓</span>
                   <span>100% 국비지원</span>
-                </div>
+                </div> */}
                 <div className="flex items-center text-[10px] md:text-sm text-gray-700">
                   <span className="font-semibold mr-1 md:mr-2">✓</span>
-                  <span>월 최대 70만원 지급</span>
+                  <span>월 최대 90만원 지급</span>
                 </div>
                 <div className="flex items-center text-[10px] md:text-sm text-gray-700">
                   <span className="font-semibold mr-1 md:mr-2">✓</span>
