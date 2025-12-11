@@ -37,11 +37,11 @@ const FullWidthBannerSection = () => {
           <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 leading-tight">
             2026년 신규 과정
             <br />
-            <span className="text-orange-400">수당 최대 90만원</span> 진행중
+            <span className="text-orange-400">Figma·미드저니</span> 무료 제공!
           </h2>
           <p className="text-blue-100 text-xs md:text-base mb-4 md:mb-6 max-w-md mx-auto md:mx-0">
-            지금 등록하면{" "}
-            <span className="text-orange-400">Figma·미드저니</span> 무료 제공!
+            {/* 지금 등록하면{" "}
+            <span className="text-orange-400">Figma·미드저니</span> 무료 제공! */}
             <br />
             디자인부터 AI 이미지 생성까지, 프로젝트 완성도를 높이세요.
           </p>
@@ -78,7 +78,7 @@ const FullWidthBannerSection = () => {
                 </div> */}
                 <div className="flex items-center text-[10px] md:text-sm text-gray-700">
                   <span className="font-semibold mr-1 md:mr-2">✓</span>
-                  <span>월 최대 90만원 지급</span>
+                  <span>Figma,미드저니 무료 제공</span>
                 </div>
                 <div className="flex items-center text-[10px] md:text-sm text-gray-700">
                   <span className="font-semibold mr-1 md:mr-2">✓</span>

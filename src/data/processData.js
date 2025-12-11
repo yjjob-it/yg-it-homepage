@@ -13,7 +13,7 @@ export const processCoursesData = [
     description:
       "모바일 웹과 앱 개발에 필요한 최신 기술을 배우고 실무 프로젝트를 통해 경험을 쌓을 수 있습니다.",
     image: "/img/img (2).jpg",
-    link: "/course/smart-web",
+    link: "http://yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnJNVlpOVmtwUlZrUkJPUT09K00=",
   },
   {
     number: "03",
@@ -21,7 +21,7 @@ export const processCoursesData = [
     description:
       "자바 기반의 웹 개발 기술을 배우고 실무 프로젝트를 통해 백엔드 개발 역량을 키울 수 있습니다.",
     image: "/img/img (3).jpg",
-    link: "/course/java-web",
+    link: "http://www.yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnJNVVpQVmtwUlZrUkJPUT09K00=",
   },
   {
     number: "04",
@@ -29,14 +29,22 @@ export const processCoursesData = [
     description:
       "영상 편집, 모션 그래픽 등 디지털 영상 제작에 필요한 기술을 배울 수 있습니다.",
     image: "/img/img (4).jpg",
-    link: "/course/digital-video",
+    link: "http://yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnJNVlpOVnpWUlZrUkJPUT09K00=",
   },
   {
     number: "05",
-    title: "프론트엔드과정",
+    title: "디지털 편집 디자인",
     description:
-      "React, Vue 등 최신 프론트엔드 프레임워크를 활용한 실무 중심의 웹 개발 기술을 배울 수 있습니다.",
+      "InDesign, Illustrator, Photoshop 등을 활용하여 전문적인 편집 디자인을 배울 수 있습니다.",
     image: "/img/img (1).jpg",
-    link: "/course/frontend",
+    link: "http://www.yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnRWbkpPVnpWUlZrUkJPUT09K00=",
+  },
+  {
+    number: "06",
+    title: "게임 그래픽 제작 전문가 양성과정",
+    description:
+      "3D 그래픽 제작을 익히고, Unity 및 SketchUp 등 최신 콘텐츠 제작 툴을 통해 나만의 콘텐츠를 직접 제작할 수 있습니다",
+    image: "/img/img (4).jpg",
+    link: "http://yjjob.or.kr/p/?j=58&edu_code=VmtaYVUxWnJNVlpOVlVwUlZrUkJPUT09K00=",
   },
 ];
