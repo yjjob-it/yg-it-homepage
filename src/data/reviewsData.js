@@ -44,12 +44,6 @@ export const partnersData = [
     course: "스마트웹앱",
   },
   {
-    company: "스페이스에듀",
-    logo: "/img/cnp파트너스.png",
-    personName: "윤*목",
-    course: "스마트웹앱",
-  },
-  {
     company: "(주)쿠바",
     logo: "/img/cuva.png",
     personName: "최*식",
@@ -60,6 +54,12 @@ export const partnersData = [
     logo: "/img/레더스.png",
     personName: "김*우",
     course: "실감형 콘텐츠 제작",
+  },
+  {
+    company: "라온디어스",
+    logo: "/img/라온디어스.png",
+    personName: "신*섭",
+    course: "디지털디자인",
   },
   {
     company: "에스엠에스",
@@ -92,11 +92,23 @@ export const partnersData = [
     personName: "임*찬",
     course: "스마트웹",
   },
+  {
+    company: "류엔",
+    logo: "/img/류엔.jpg",
+    personName: "엄*현",
+    course: "디지털디자인",
+  },
 
   {
     company: "(주)엠디엑스",
     logo: "/img/엠디엑스.jpg",
     personName: "이*현",
     course: "스마트웹",
+  },
+  {
+    company: "경기신문사",
+    logo: "/img/경기신문.jpg",
+    personName: "김*정",
+    course: "디지털디자인",
   },
 ];
