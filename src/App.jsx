@@ -33,7 +33,7 @@ const App = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
-      <CoursesSection courses={coursesData} />
+      <CoursesSection />
       <StatsSection stats={statsData} />
       <FeatureSections features={featuresData} />
       <FullWidthBannerSection />

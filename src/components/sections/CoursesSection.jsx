@@ -1,9 +1,40 @@
 import React, { useState } from "react";
 import CourseCard from "../ui/CourseCard";
 
-const CoursesSection = ({ courses }) => {
+import { useEffect } from "react";
+
+const CoursesSection = () => {
   const [activeTab, setActiveTab] = useState("모집중");
   const [showAll, setShowAll] = useState(false);
+  const [courses, setCourses] = useState({
+    모집중: [],
+    전체보기: [],
+  });
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    fetch(`${apiUrl}/courses`)
+      .then((res) => res.json())
+      .then((data) => {
+        // API 응답 데이터가 배열이라고 가정하고 변환
+        if (Array.isArray(data)) {
+          console.log("Fetched courses:", data);
+          // API 데이터 매핑 (snake_case -> camelCase)
+          const mappedData = data.map((course) => ({
+            ...course,
+            recruitStatus: course.recruit_status,
+            recruitPeriod: course.recruit_period,
+            educationPeriod: course.education_period,
+          }));
+
+          setCourses({
+            모집중: mappedData.filter((course) => course.recruitStatus === "모집중"),
+            전체보기: mappedData,
+          });
+        }
+      })
+      .catch((err) => console.error("Failed to fetch courses:", err));
+  }, []);
 
   const filters = [
     "모집중",
@@ -29,11 +60,10 @@ const CoursesSection = ({ courses }) => {
               setActiveTab(filter);
               setShowAll(false);
             }}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeTab === filter
-                ? "bg-orange-500 text-white shadow-lg"
-                : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-            }`}
+            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === filter
+              ? "bg-orange-500 text-white shadow-lg"
+              : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+              }`}
           >
             {filter}
           </button>
