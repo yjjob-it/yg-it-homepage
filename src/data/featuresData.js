@@ -23,12 +23,12 @@ export const featuresData = [
   },
   {
     subtitle: "국비지원 100%",
-    title: "교육비 ZERO! 월 최대 70만원 지원",
+    title: "국비지원 과정! 매월 훈련수당 최대 80만원 지원",
     description:
-      "국비 전액 지원으로 교육비 부담 없이 누구나 양질의 교육을 학습할 수 있습니다.",
+      "국비 지원으로 교육비 부담 없이 누구나 양질의 교육을 학습할 수 있습니다.",
     subDescription:
-      "또한 훈련 장려금으로 월 최대 70만원까지 지급되어 학업과 생활을 동시에 이어갈 수 있습니다.",
-    imageSrc: "/img/img (7).png",
+      "또한 훈련 장려금으로 월 최대 80만원까지 지급되어 학업과 생활을 동시에 이어갈 수 있습니다.",
+    imageSrc: "/img/img (7).jpg",
     imagePosition: "right",
     backgroundColor: "bg-gray-100",
   },

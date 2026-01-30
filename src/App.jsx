@@ -19,7 +19,7 @@ import InquirySection from "./components/sections/InquirySection";
 //import InfoSection from "./components/sections/InfoSection";
 
 // Data
-import { coursesData } from "./data/coursesData";
+
 import { statsData } from "./data/statsData";
 import { featuresData } from "./data/featuresData";
 import { portfoliosData } from "./data/portfoliosData";
