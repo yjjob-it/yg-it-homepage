@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,18 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id) => {
+    if (id === "board") {
+      navigate("/board");
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      setIsMenuOpen(false);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -32,11 +47,13 @@ const Header = () => {
   // 네비게이션 메뉴 아이템
   const navItems = [
     ["courses", "모집과정"],
-    ["stats", "지원소개"],
+    // ["stats", "지원소개"],
     ["portfolio", "포트폴리오"],
-    ["process", "운영과정"],
+    // ["process", "운영과정"],
+    ["reviews", "수강생 스토리"],
     ["support", "선발절차"],
     ["faqs", "FAQ"],
+    ["inquery", "문의게시판"],
   ];
 
   return (
@@ -57,7 +74,12 @@ const Header = () => {
                 className="flex items-center space-x-2 cursor-pointer group"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  if (location.pathname === "/") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    return;
+                  }
+
+                  navigate("/");
                 }}
               >
                 <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">

@@ -17,7 +17,7 @@ const HeroSection = () => {
         <div className="absolute top-10 right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 py-20">
+      <div className="max-w-5xl mx-auto text-center relative z-10 pt-20 pb-8">
         <p className="text-2xl md:text-2xl text-orange-500 font-bold mb-6 text-sm uppercase tracking-wide">
           비전공자도 시작할 수 있다!
         </p>
@@ -25,13 +25,13 @@ const HeroSection = () => {
           "기초부터 취업까지, 맞춤형 IT 전문 교육의 시작"
         </h2>
         <h1 className="text-5xl md:text-5xl font-black mb-12">
-          <span className="text-gray-800">영진직업전문학교 IT교육관</span>
+          <span className="text-gray-800">영진직업전문학교 부트캠프</span>
         </h1>
 
-        <div className="mt-40 flex flex-col items-center animate-bounce">
+        {/* <div className="mt-40 flex flex-col items-center animate-bounce">
           <ChevronDown className="w-8 h-8 text-gray-300" />
           <ChevronDown className="w-8 h-8 text-gray-300 -mt-4" />
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,12 +1,10 @@
 import React from "react";
 
-const InquirySection = () => {
-  const handleInquiryClick = () => {
-    window.location.href = "http://www.yjjob.or.kr/p/?j=28";
-  };
+const BOARD_URL = "https://it.yjjob.or.kr/board/bbs/board.php?bo_table=free";
 
+const InquirySection = () => {
   return (
-    <section className="bg-gray-40 py-10 px-4">
+    <section className="bg-gray-40 py-10 px-4" id="inquery">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-2xl md:text-2xl font-bold text-gray-700 mb-3">
           영진직업전문학교에 대해
@@ -15,12 +13,29 @@ const InquirySection = () => {
           더 궁금하다면?
         </h2>
 
-        <button
-          onClick={handleInquiryClick}
-          className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-300 rounded-lg text-gray-600 font-medium hover:border-orange-500 hover:text-orange-500 transition-all duration-300 shadow-sm hover:shadow-md"
-        >
-          1:1 채팅 문의하기
-        </button>
+        <div>
+          <iframe
+            title="영진직업전문학교 문의게시판"
+            src={BOARD_URL}
+            className="w-full h-[400px]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            // scrolling="no"
+          />
+        </div>
+
+        <p className="mt-3 text-sm text-slate-500">
+          게시판이 보이지 않으면
+          <a
+            href={BOARD_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="ml-1 text-blue-600 hover:text-blue-700 underline"
+          >
+            새 창에서 열기
+          </a>
+          를 이용해 주세요.
+        </p>
       </div>
     </section>
   );
