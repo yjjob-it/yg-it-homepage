@@ -52,7 +52,7 @@ const Header = () => {
     // ["process", "운영과정"],
     ["reviews", "수강생 스토리"],
     ["support", "선발절차"],
-    ["faqs", "FAQ"],
+    // ["faqs", "FAQ"],
     ["inquery", "문의게시판"],
   ];
 

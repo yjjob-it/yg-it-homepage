@@ -42,7 +42,7 @@ const HomePage = () => {
       <RatingSection reviews={reviewsData} partners={partnersData} />
       {/* <ProcessSection courses={processCoursesData} /> */}
       <SupportSection supports={supportsData} />
-      <FAQSection faqs={faqsData} />
+      {/* <FAQSection faqs={faqsData} /> */}
       <InquirySection />
     </>
   );

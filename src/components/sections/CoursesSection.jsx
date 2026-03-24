@@ -71,19 +71,17 @@ const CoursesSection = () => {
       </div>
 
       {/* 그리드 레이아웃 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses[activeTab]?.map((course, index) => {
           const isHiddenMobile =
             !showAll && index >= 3 ? "hidden sm:block" : "";
           const isHiddenTablet =
             !showAll && index >= 6 ? "hidden lg:block" : isHiddenMobile;
-          const isHiddenDesktopMd =
-            !showAll && index >= 9 ? "hidden xl:block" : isHiddenTablet;
-          const isHiddenDesktopLg =
-            !showAll && index >= 12 ? "hidden" : isHiddenDesktopMd;
+          const isHiddenDesktop =
+            !showAll && index >= 9 ? "hidden" : isHiddenTablet;
 
           return (
-            <div key={index} className={isHiddenDesktopLg}>
+            <div key={index} className={isHiddenDesktop}>
               <CourseCard {...course} />
             </div>
           );
@@ -112,21 +110,11 @@ const CoursesSection = () => {
           </button>
         )}
 
-        {/* 데스크톱1*/}
+        {/* 데스크톱 */}
         {totalCourses > 9 && (
           <button
             onClick={() => setShowAll(!showAll)}
-            className="hidden lg:block xl:hidden text-gray-700 font-medium py-3 px-6 hover:text-orange-500 transition-colors duration-300"
-          >
-            {showAll ? "접기 ▲" : "더보기 ▼"}
-          </button>
-        )}
-
-        {/* 데스크톱2 */}
-        {totalCourses > 12 && (
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="hidden xl:block text-gray-700 font-medium py-3 px-6 hover:text-orange-500 transition-colors duration-300"
+            className="hidden lg:block text-gray-700 font-medium py-3 px-6 hover:text-orange-500 transition-colors duration-300"
           >
             {showAll ? "접기 ▲" : "더보기 ▼"}
           </button>

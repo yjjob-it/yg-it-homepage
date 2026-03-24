@@ -73,18 +73,21 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-gray-900 mb-4">고객 지원</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              {["공지 사항", "자주하는 질문", "이용약관", "기업 문의"].map(
-                (item, idx) => (
-                  <li key={idx}>
-                    <a
-                      href="#"
-                      className="hover:text-orange-500 transition-colors hover:translate-x-1 inline-block"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { name: "공지 사항", link: "http://yjjob.or.kr/p/?j=59" },
+                { name: "자주하는 질문", link: "https://it.yjjob.or.kr/board/bbs/board.php?bo_table=free" },
+              ].map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-orange-500 transition-colors hover:translate-x-1 inline-block"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -92,24 +95,28 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-gray-900 mb-4">서비스</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              {["교직원 확인하기", "채용팀 가이드라인", "채용"].map(
-                (item, idx) => (
-                  <li key={idx}>
-                    <a
-                      href="#"
-                      className="hover:text-orange-500 transition-colors flex items-center group"
-                    >
-                      {item}
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { name: "교직원 확인하기", link: "http://yjjob.or.kr/p/?j=69" },
+                { name: "채용팀 가이드라인", link: "http://yjjob.or.kr/p/?j=64" },
+                { name: "채용", link: "http://yjjob.or.kr/p/?j=205" },
+              ].map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-orange-500 transition-colors flex items-center group"
+                  >
+                    {item.name}
+                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* 파트너 */}
-          <div>
+          {/* <div>
             <h4 className="font-bold text-gray-900 mb-4">협력체</h4>
             <div className="flex flex-wrap gap-3">
               {["A", "B", "C"].map((partner, idx) => (
@@ -121,32 +128,29 @@ const Footer = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* 하단정보 */}
         <div className="border-t border-gray-300 pt-8 text-xs text-gray-500">
           <p className="mb-2">
-            <span className="font-semibold text-gray-700">대표자:</span> 곽승호,
-            차영숙 |{" "}
-            <span className="font-semibold text-gray-700">사업자등록번호:</span>{" "}
-            502-95-07029
+            <span className="font-semibold text-gray-700">회사명:</span> 영진직업전문학교 |{" "}
+            <span className="font-semibold text-gray-700">대표자:</span> 곽승호, 차영숙 |{" "}
+            <span className="font-semibold text-gray-700">Email:</span> cha8877@hanmail.net |{" "}
+            <span className="font-semibold text-gray-700">Tel:</span> 053-983-8877 |{" "}
+            <span className="font-semibold text-gray-700">Fax:</span> 053-722-2423
           </p>
           <p className="mb-2">
-            <span className="font-semibold text-gray-700">주소:</span> 41166
-            대구 동구 화랑로 525 (용계동) |
-            <span className="font-semibold text-gray-700"> 전화:</span>{" "}
-            053-983-8877 |
-            <span className="font-semibold text-gray-700"> Fax:</span>{" "}
-            053-722-2423
+            <span className="font-semibold text-gray-700">개인정보보호책임자:</span> 김정현 |{" "}
+            <span className="font-semibold text-gray-700">Email:</span> cha8877@hanmail.net |{" "}
+            <span className="font-semibold text-gray-700">Tel:</span> 053-983-8877 |{" "}
+            <span className="font-semibold text-gray-700">사업자번호:</span> 502-95-07029
           </p>
           <p className="mb-2">
-            <span className="font-semibold text-gray-700">통신판매업신고:</span>{" "}
-            제2022-서울강남-1234호
+            <span className="font-semibold text-gray-700">주소:</span> 41166 대구 동구 화랑로 525 (용계동)
           </p>
           <p className="mb-4 text-gray-400">
-            Copyright © 영진직업전문학교-대구직업전문학교 | 대구국비교육. All
-            Rights Reserved.
+            copyright © 영진직업전문학교-대구직업전문학교 | 대구국비교육. All Rights Reserved.
           </p>
         </div>
       </div>
