@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CourseCard from "../ui/CourseCard";
-
+import { coursesData } from "../../data/coursesData";
 import { useEffect } from "react";
 
 const CoursesSection = () => {
@@ -28,12 +28,22 @@ const CoursesSection = () => {
           }));
 
           setCourses({
-            모집중: mappedData.filter((course) => course.recruitStatus === "모집중"),
+            모집중: mappedData.filter(
+              (course) => course.recruitStatus === "모집중",
+            ),
             전체보기: mappedData,
           });
         }
       })
-      .catch((err) => console.error("Failed to fetch courses:", err));
+      .catch((err) => {
+        console.error("Failed to fetch courses:", err);
+        setCourses({
+          모집중: coursesData.filter(
+            (course) => course.recruitStatus === "모집중",
+          ),
+          전체보기: [],
+        });
+      });
   }, []);
 
   const filters = [
@@ -60,10 +70,11 @@ const CoursesSection = () => {
               setActiveTab(filter);
               setShowAll(false);
             }}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === filter
-              ? "bg-orange-500 text-white shadow-lg"
-              : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-              }`}
+            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+              activeTab === filter
+                ? "bg-orange-500 text-white shadow-lg"
+                : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+            }`}
           >
             {filter}
           </button>
@@ -71,7 +82,7 @@ const CoursesSection = () => {
       </div>
 
       {/* 그리드 레이아웃 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 grid-rows-1 gap-16">
         {courses[activeTab]?.map((course, index) => {
           const isHiddenMobile =
             !showAll && index >= 3 ? "hidden sm:block" : "";
