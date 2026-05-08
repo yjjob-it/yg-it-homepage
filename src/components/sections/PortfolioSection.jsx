@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Manipulation, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import PortfolioCard from "../ui/PortfolioCard";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const PortfolioSection = ({ portfolios }) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleCardClick = (url) => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  const displayedPortfolios = isMobile ? portfolios : portfolios.slice(0, 9);
+  const displayedPortfolios = portfolios;
 
   return (
     <section id="portfolio" className="bg-gray-50 py-16 px-4">
@@ -32,20 +20,43 @@ const PortfolioSection = ({ portfolios }) => {
           "실무 프로젝트로 완성한 포트폴리오를 직접 확인하세요"
         </p>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedPortfolios.map((portfolio, index) => (
-            <div
-              onClick={() => handleCardClick(portfolio.url)}
-              key={index}
-              className="bg-[#999999] aspect-[4/3] shadow-lg hover:shadow-2xl hover:scale-102 transition-all duration-300 cursor-pointer overflow-hidden m-1 rounded-sm"
-            >
-              <img
-                src={portfolio.image}
-                alt={`Portfolio ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <Swiper
+            modules={[Manipulation, Navigation]}
+            slidesPerView={3}
+            spaceBetween={30}
+            centeredSlides
+            speed={500}
+            navigation
+            pagination={{ clickable: true }}
+            className="portfolio-swiper pb-10"
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 16,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
+          >
+            {displayedPortfolios.map((portfolio, index) => (
+              <SwiperSlide key={`${portfolio.image}-${index}`}>
+                <div className="portfolio-slide-inner mx-auto flex justify-center">
+                  <PortfolioCard
+                    image={portfolio.image}
+                    url={portfolio.url}
+                    index={index}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

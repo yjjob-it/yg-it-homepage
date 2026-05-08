@@ -11,3 +11,27 @@
   font-weight: 700;
   font-style: normal;
 }
+
+.portfolio-swiper {
+  overflow: hidden;
+}
+
+.portfolio-swiper .swiper-slide {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.portfolio-swiper .portfolio-slide-inner {
+  transform: scale(0.88);
+  transition: transform 0.45s ease;
+}
+
+.portfolio-swiper .swiper-slide-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.portfolio-swiper .swiper-slide-active .portfolio-slide-inner {
+  transform: scale(1);
+}
